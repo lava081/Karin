@@ -351,8 +351,10 @@ export interface KarinAdapter {
    * 发送合并转发消息
    * @param contact 联系人信息
    * @param elements 消息元素
+   * @param reply_id 被回复的消息ID(仅适用于需要区分主动消息和被动消息的适配器)
+   * @returns 发送的合并转发消息的ID
    */
-  sendForwardMessage (contact: Contact, elements: Array<NodeElement>): Promise<{ message_id: string }>
+  sendForwardMessage (contact: Contact, elements: Array<NodeElement>, reply_id?: string): Promise<{ message_id: string }>
 
   /**
    * 对消息进行表情回应 icqq需要传递seq
