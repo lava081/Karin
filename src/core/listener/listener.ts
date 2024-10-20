@@ -111,7 +111,7 @@ export class Listeners extends EventEmitter {
 
     /** 对sendForwardMessage方法进行修改 添加中间键 */
     const sendForwardMessage = data.bot.sendForwardMessage
-    data.bot.sendForwardMessage = async (contact: Contact, elements: Array<NodeElement>) => {
+    data.bot.sendForwardMessage = async (contact: Contact, elements: Array<NodeElement>, reply_id: string) => {
       for (const info of pluginLoader.use.forwardMsg) {
         try {
           let next = false
@@ -134,7 +134,7 @@ export class Listeners extends EventEmitter {
         }
       }
 
-      const result = await sendForwardMessage.call(data.bot, contact, elements)
+      const result = await sendForwardMessage.call(data.bot, contact, elements, reply_id)
       return result
     }
 

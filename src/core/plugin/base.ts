@@ -118,7 +118,7 @@ export class Plugin implements PluginType {
 
   /** 快速回复合并转发 */
   async replyForward (msg: NodeElement[]): Promise<{ message_id: string }> {
-    const result = await this.e.bot.sendForwardMessage(this.e.contact, msg)
+    const result = await this.e.bot.sendForwardMessage(this.e.contact, msg, this.e.message_id)
     return result
   }
 
